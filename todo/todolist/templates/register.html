@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% if errors %}
+        {% for each in errors %}
+        <strong>{{ each }}</strong>
+        <br />
+        {% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        用户名：
+        <input type="text" name="username">
+        <br />
+        邮箱：
+        <input type="text" name="email">
+        <br />
+        密码：
+        <input type="text" name="password">
+        <br />
+        <!--
+        确认密码：
+        <input type="text" name="user_password2">
+        -->
+        <br />
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>
