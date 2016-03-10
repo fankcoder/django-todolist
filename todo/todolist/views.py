@@ -10,19 +10,19 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
-    print 'index'
-    
-    if request.method == 'POST':
-        print 'post sd'
-        if '_user' in request.session:
-            user = request.session.get('_user')
-        else:
-            print 'user error'
-
-        data = List.object.filter(user=user)
-        for each in data:
-            print each.title
-            
+    if '_user' in request.session:
+        user = request.session.get('_user')
+        list_data = List.objects.filter(user=user)
+        data = []
+        for each in list_data:
+            title = each.title
+            username = each.user
+            content = each.content
+            level = each.level
+            data.append(dict(title=title,username=username,content=content,level=level))
+        return render(request, 'index.html', {'data':data})
+    else:
+        print 'user error'
 
     return render(request, 'index.html')
     '''
@@ -117,7 +117,7 @@ def logout_view(request):
 
 @login_required
 def create_view(request):
-    form = CreateList()
+    #form = CreateList()
 
     if '_user' in request.session:
         user = request.session.get('_user')
@@ -126,20 +126,13 @@ def create_view(request):
         #return 
 
     if request.method=='POST':
-        '''
-        username = request.POST.get('user')
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        level = request.POST.get('level')
-        print username,title,content,level
-        '''
-
         form = CreateList(request.POST)
         print form.is_valid()
         if form.is_valid():
             form.save()
             print 'save successed'
-            return render(request,'index.html')
+            return redirect(reverse('todolist.views.index' , args=[]))
+            #return render(request,'index.html',{'user':user})
 
     return render(request, 'create.html' ,{'user':user})
 
