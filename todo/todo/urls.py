@@ -8,7 +8,9 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'todolist.views.index'),
-    url(r'^index/', 'todolist.views.index', name="index"),
-    url(r'^register/$', 'todolist.views.register'),
-    url(r'^login/$', 'todolist.views.login'),
+    #url(r'^index/$', 'todolist.views.index', name="index"),
+    url(r'^index/register/$', 'todolist.views.register_view'),
+    url(r'^index/login/$', 'todolist.views.login_view'),
+    url(r'^index/logout/$', 'todolist.views.logout_view'),
+    url(r'^index/create/$', 'todolist.views.create_view'),
 ]

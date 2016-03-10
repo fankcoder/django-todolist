@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% if errors %}
+        {% for each in errors %}
+        <strong>{{ each }}</strong>
+        <br />
+        {% endfor %}
+    {% endif %}
+    
+    <form method='post'>
+        {% csrf_token %}
+        Username: <input type="text" name="username" size="10" />
+        <br />
+        Password: <input type="text" name="password" size="16" />
+        <br />
+        <input type="submit" value="submit" />
+    </form> 
+</body>
+</html>

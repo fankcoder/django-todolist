@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class CreateList(ModelForm):
     class Meta:
         model = List
-        fields = ['title','content','level']
+        fields = ['title','content','level','user']
 
 class UserForm(ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())

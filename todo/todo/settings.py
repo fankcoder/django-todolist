@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'todolist',
-    'account',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,6 +103,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+LOGIN_URL = 'todolist.views.login_view'
 
 STATIC_URL = '/static/'
 

@@ -32,8 +32,10 @@
 			<h3 class="text-center">
                 Create TodoList
 			</h3>
+            <span>hello {{ user }}</span>
 			<form class="form-horizontal" role="form" for="list" method="post">
                 {%csrf_token%}
+                <input type="hidden" name="user" value={{ user }} />{{ form.user.errors }}
 				<div class="form-group">
 					 <label class="col-sm-2 control-label">title</label>
 					<div class="col-sm-10">

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class List(models.Model):
     title = models.CharField(max_length=50)
     content = models.CharField(max_length=10000)
-    user = models.ForeignKey(User, unique=True)
+    user = models.CharField(max_length=200)
 
     levelist = (
             (0,'green'),
