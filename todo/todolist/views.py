@@ -12,50 +12,31 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     if '_user' in request.session:
         user = request.session.get('_user')
+        print user
         list_data = List.objects.filter(user=user)
+        #data = []
+
+        if 'del' in request.GET:
+            print request.GET['del']
+            id_num = request.GET['del']
+            pardata = List.objects.filter(id=id_num)
+            pardata.delete()        
+        
         data = []
         for each in list_data:
             title = each.title
             username = each.user
             content = each.content
             level = each.level
-            data.append(dict(title=title,username=username,content=content,level=level))
-        return render(request, 'index.html', {'data':data})
+            uid = each.id
+            data.append(dict(title=title,username=username,content=content,level=level,id=uid))
+
+        return render(request, 'index.html', {'data':data,'user':user})
     else:
-        print 'user error'
+        _user = None
+        return render(request, 'index.html', {'user':_user})
 
     return render(request, 'index.html')
-    '''
-    form = CreateList()
-    
-    if request.method=='POST':
-        form = CreateList(request.POST)
-        if form.is_valid():
-            form.save()
-            data = List.objects.all()[::-1]
-            context = {'form':form,'data':data}
-            #for each in  data:
-            #    print each.levelist[0]
-            return render(request,'index.html',context)
-
-    elif 'del' in request.GET:
-        print request.GET['del']
-        id_num = request.GET['del']
-        List.objects.filter(id=id_num).delete()
-        data = List.objects.all()[::-1]
-        context = {'data':data}
-        return render(request,"index.html",context)
-
-    elif 'create' in request.GET:
-        return render(request,"create.html")
-
-    try:
-        data = List.objects.all()[::-1]
-    except:
-        print "there is no data"
-    return render(request,'index.html',{'data':data})
-    '''
-    #return render(request, 'index.html')
 
 def register_view(request):
     errors = []

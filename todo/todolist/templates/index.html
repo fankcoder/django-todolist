@@ -10,18 +10,36 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 </head>
 <body>
-    <ul>
-        <li><a  href="index/register/">注册</a></li>
-        <li><a href="index/login/">登录</a></li>
-        <li><a href="index/logout/">登出</a></li>
-    </ul>
+
 <div class="container">
 	<div class="row clearfix">
-		<div class="col-md-12 column">
+        <div class="span12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/">首页</a> <span class="divider">/</span>
+                </li>
+                <li>
+                    <a href="index/register/">注册</a> <span class="divider">/</span>
+                </li>
+                <li>
+                    <a href="index/login/">登录</a>  <span class="divider">/</span>
+                </li>
+                <li>
+                    <a href="index/logout/">登出</a> <span class="divider">/</span>
+                </li>
+                <span id="gifts">事项管理,科学人生 --fankcoder</span>
+            </ul>
+        </div>
+        <div class="col-md-1 column">
+        </div>
+		<div class="col-md-10 column">
              <form action="index/create/">
                 <input type="submit" value="create" name="create" class="btn btn-default btn-block btn-primary" />
              </form>
 		</div>
+        <div class="col-md-1 column">
+        </div>
+        {% if user %}
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-12 column">
@@ -55,6 +73,58 @@
             </div>
 		</div>
 	</div>
+    {% else %}
+    <br />
+    <br />
+    <div id="famous">
+    <dl class="dl-horizontal">
+        <dt>
+            TodoList
+        </dt>
+        <dd>
+            科学的生活工作,让TodoList来帮助你提高效率,使事项管理成为你生活的一部分。
+        </dd>
+        <br />
+        <dt>
+            爱因斯坦
+        </dt>
+        <dd>
+            成功＝艰苦劳动＋正确的方法＋少说空话。
+        </dd>
+        <dt>
+            Albert Einstein
+        </dt>
+        <dd>
+            If A is a success in life, then A equals x plus y plus z. Work is x; y is play; and z is keeping your mouth shut.
+        </dd>
+        <br />
+        <dt>
+            史蒂夫·乔布斯
+        </dt>
+        <dd>
+            你的时间有限，所以不要浪费时间为别人而活。不要被教条所限，那也就是活在别人的观念里。不要让别人的意见左右自己内心的声音。最重要的是，勇敢的去追随自己的心灵和直觉，只有自己的心灵和直觉才知道你自己的真实想法，其他，一切都是次要。
+        </dd>
+        <dt>
+            Steve Jobs
+        </dt>
+        <dd>
+            Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking. Don't let the noise of other's opinions drown out your own inner voice. And most important, have the courage to follow your heart and intuition. They somehow already know what you truly want to become. Everything else is secondary.
+        </dd>
+        <br />
+        <dt>
+            林纳斯·托瓦兹
+        </dt>
+        <dd>
+            废话少说,放码过来~
+        </dd>
+        <dt>
+            Linus Torvalds
+        </dt>
+        <dd>
+            Talk is cheap. Show me the code.
+        </dd>
+        </div>
+    {% endif %}
 </div>
 </body>
 </html>

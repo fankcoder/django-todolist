@@ -1,5 +1,8 @@
 body,h1,p {margin:0;padding:0;}
 
-.container {margin-top:30px;}
+.container {margin-top:5px;}
 #content {margin-top:10px;}
-#delete {position:relative;top:-40px;left:1050px;}
+#delete {width:80px;position:relative;top:-40px;left:1050px;}
+.title-text {margin-left:200px;}
+#famous {margin-top:50px;}
+#gifts {color:#428BCA;position:relative;left:700px;}
