@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^index/login/$', 'todolist.views.login_view'),
     url(r'^index/logout/$', 'todolist.views.logout_view'),
     url(r'^index/create/$', 'todolist.views.create_view'),
+    url(r'^index/complete/$', 'todolist.views.complete'),
 ]

@@ -4,8 +4,9 @@ from django.contrib.auth.models import User
 # Create your models here.
 class List(models.Model):
     title = models.CharField(max_length=50)
-    content = models.CharField(max_length=10000)
+    content = models.CharField(max_length=10000,blank=True)
     user = models.CharField(max_length=200)
+    complete = models.BooleanField(default=False)
 
     levelist = (
             (0,'green'),

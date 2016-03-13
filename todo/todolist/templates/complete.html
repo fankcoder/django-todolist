@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% block title %}TodoList历史{% endblock %}
+{% block content %}
+    <div class="row clearfix">
+    {% include 'nav.html' %}
+    </div>
+	<div class="row clearfix">
+        <h3 class="text-center">
+            已完成
+        </h3>
+		<div class="col-md-12 column">
+            <div id="content">
+                {% if data%}
+                {% for each in data %}
+                {% if each.complete == True %}
+                <script>
+                    $(document).ready(function(){
+                        if ($(".h{{each.level}}").attr("class") == "h0"){
+                            $(".h{{each.level}}").attr("class","label label-success");
+                        }
+                        if ($(".h{{each.level}}").attr("class") == "h1"){
+                            $(".h{{each.level}}").attr("class","label label-info");
+                        }
+                        if ($(".h{{each.level}}").attr("class") == "h2"){
+                            $(".h{{each.level}}").attr("class","label label-warning");
+                        }
+                        if ($(".h{{each.level}}").attr("class") == "h3"){
+                            $(".h{{each.level}}").attr("class","label label-danger");
+                        }
+                    });
+                </script> 
+                <div class="col-md-11 column">
+                    <h2 class="h{{each.level}}">{{each.title}}</h2>
+                    <p>{{each.content}}<p>
+                </div>
+                <div class="col-md-1 column">
+                    <form method="get" id="delete">
+                    <input type="hidden" name="del" value="{{each.id}}" />
+                    <input type="submit" id="delete" class="btn btn-default btn-inverse" value="删除" />
+                    <br />
+                    </form>
+                <br />
+                </div>
+
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

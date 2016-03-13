@@ -14,13 +14,18 @@ def index(request):
         user = request.session.get('_user')
         print user
         list_data = List.objects.filter(user=user)
-        #data = []
 
         if 'del' in request.GET:
             print request.GET['del']
             id_num = request.GET['del']
             pardata = List.objects.filter(id=id_num)
             pardata.delete()        
+
+        if 'com' in request.GET:
+            print request.GET['com']
+            id_num = request.GET['com']
+            pardata = List.objects.filter(id=id_num)
+            List.objects.filter(id=id_num).update(complete=True)
         
         data = []
         for each in list_data:
@@ -28,15 +33,16 @@ def index(request):
             username = each.user
             content = each.content
             level = each.level
+            complete = each.complete
             uid = each.id
-            data.append(dict(title=title,username=username,content=content,level=level,id=uid))
+            data.append(dict(title=title,username=username,content=content,level=level,id=uid,complete=complete))
 
         return render(request, 'index.html', {'data':data,'user':user})
     else:
         _user = None
         return render(request, 'index.html', {'user':_user})
 
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'user':_user})
 
 def register_view(request):
     errors = []
@@ -76,9 +82,7 @@ def login_view(request):
             if user.is_active:
                 login(request, user)
                 request.session['_user'] = username
-                #print request.session.get('_user')
                 return redirect(reverse('todolist.views.index' , args=[]))
-                #return render(request, 'index.html', {'user':username})
             else:
                 print 'disabled account'
                 return redirect(reverse('todolist.views.index' , args=[]))
@@ -117,3 +121,27 @@ def create_view(request):
 
     return render(request, 'create.html' ,{'user':user})
 
+@login_required
+def complete(request):
+    if '_user' in request.session:
+        user = request.session.get('_user')
+        print user
+        list_data = List.objects.filter(user=user)
+
+        if 'del' in request.GET:
+            print request.GET['del']
+            id_num = request.GET['del']
+            pardata = List.objects.filter(id=id_num)
+            pardata.delete()        
+        
+        data = []
+        for each in list_data:
+            title = each.title
+            username = each.user
+            content = each.content
+            level = each.level
+            complete = each.complete
+            uid = each.id
+            data.append(dict(title=title,username=username,content=content,level=level,id=uid,complete=complete))
+
+    return render(request, 'complete.html', {'data':data,'user':user})

@@ -1,49 +1,28 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Todolist-Create</title>
-    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/create_style.css' %}" />
+{% extends 'index.html' %}
+{% block title %}TodoList创建任务{% endblock %}
 
-</head>
-<body>
+{% block content %}
+    <div class="row clearfix">
+    {% include 'nav.html' %}
+    </div>
 
-<!--
-<h1>创建任务</h1>
-<form for="list" method="post">
-    {%csrf_token%}
-    title : <input type="text" for="list" name="title" />{{ form.title.errors }}<br />
-    content : <input type="text" name="content" />{{ form.content.errors}}<br />
-    level : <input type="radio" name="level" value="0" />green
-    <input type="radio" name="level" value="1" />blue
-    <input type="radio" name="level" value="2" />yellow
-    <input type="radio" name="level" value="3" />red
-    <br />
-    <input type="submit" value="提交" />
-</form>
--->
-<div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<h3 class="text-center">
-                Create TodoList
+                创建新任务
 			</h3>
-            <span>hello {{ user }}</span>
 			<form class="form-horizontal" role="form" for="list" method="post">
                 {%csrf_token%}
                 <input type="hidden" name="user" value={{ user }} />{{ form.user.errors }}
+                <input type="hidden" name="complete" value="False" />
 				<div class="form-group">
-					 <label class="col-sm-2 control-label">title</label>
+					 <label class="col-sm-2 control-label">待办任务</label>
 					<div class="col-sm-10">
 						<input type="text" for ="list" name="title" class="form-control" />{{ form.title.errors }}
 					</div>
 				</div>
 				<div class="form-group">
-					 <label class="col-sm-2 control-label">content</label>
+					 <label class="col-sm-2 control-label">备注(选填)</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" name="content" />{{ form.content.errors}}
 					</div>
@@ -66,6 +45,4 @@
 			</form>
 		</div>
 	</div>
-</div>
-</body>
-</html>
+{% endblock %}
