@@ -4,12 +4,16 @@
     <div class="row clearfix">
     {% include 'nav.html' %}
     </div>
-    {% if errors %}
-        {% for each in errors %}
-        <strong>{{ each }}</strong>
-        <br />
-        {% endfor %}
-    {% endif %}
+    <div class="row clearfix">
+        <div id="error" class="col-md-12 column text-center">
+        {% if errors %}
+            {% for each in errors %}
+            <strong>{{ each }}</strong>
+            <br />
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
     <div class="row clearfix">
 		<div class="col-md-12 column">
 			<h3 class="text-center">

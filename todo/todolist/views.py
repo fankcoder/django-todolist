@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 from django.shortcuts import render
 from .forms import CreateList
 from .models import List
@@ -52,16 +53,16 @@ def register_view(request):
         password = request.POST.get('password')
         
         if not username:
-            errors.append('Please fill username')
+            errors.append('请填写用户名')
             return render(request, 'register.html' ,{'errors':errors})
         if not email:
-            errors.append('Please fill eamil')
+            errors.append('请填写邮箱')
             return render(request, 'register.html' ,{'errors':errors})
         if not password:
-            errors.append('Please fill password')
+            errors.append('请填写密码')
             return render(request, 'register.html' ,{'errors':errors})
         if User.objects.filter(username=username):
-            errors.append('user has been taken')
+            errors.append('该用户已被注册')
             return render(request, 'register.html' ,{'errors':errors})
         else:
             user = User.objects.create_user(username=username, password=password, email=email)
@@ -87,7 +88,7 @@ def login_view(request):
                 print 'disabled account'
                 return redirect(reverse('todolist.views.index' , args=[]))
         else:
-            errors.append('login error,please check username and password')
+            errors.append('登录失败,请填写正确用户名或密码')
     return render(request, 'login.html' , {'errors':errors})
 
 def logout_view(request):

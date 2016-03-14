@@ -75,12 +75,13 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 '''
+#use mysql databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'todolist',
-        'USER': 'root',
-        'PASSWORD': 'icgoozf',
+        'USER': 'root',    #replace your mysql username
+        'PASSWORD': 'xxxxx',  #replace your mysql password
         'HOST': '127.0.0.1',
         'PROT': '3306',
     }
