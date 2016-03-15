@@ -5,7 +5,7 @@ TodoList是一个便捷的事项管理应用,它帮助我们管理待办任务,�
 
 TodoList包含账户注册登录等功能,来方便记录管理你的任务事项
 
-## Introduce
+## Introduction
 Todolist,a quick and convenient management application for items that are about to be done,which helps us manage the to-do tasks, combine working train of thought and improve work efficency. 
 
 Todolist consists of kinds of functions,including the registration and login for an account,so that it can make your tasks record and items management much easier.
