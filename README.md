@@ -11,7 +11,7 @@ Todolist,a quick and convenient management application for items that are about 
 Todolist consists of kinds of functions,including the registration and login for an account,so that it can make your tasks record and items management much easier.
 
 ## 在线访问
-[Todolist](https://139.129.60.2/)
+[Todolist](http://139.129.60.2/)
 
 
 界面:
